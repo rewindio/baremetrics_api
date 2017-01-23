@@ -1,4 +1,3 @@
-require 'baremetrics/version'
 require 'baremetrics/client'
 require 'baremetrics/version'
 
