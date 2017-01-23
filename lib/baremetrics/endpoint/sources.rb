@@ -1,19 +1,19 @@
 module Baremetrics
   module Endpoint
-    class Account
-      PATH = '/account'.freeze
+    class Sources
+      PATH = '/sources'.freeze
 
       def initialize(client)
         @client = client
       end
 
-      def get_account
-        JSON.parse(account_request.body)
+      def list_sources
+        JSON.parse(sources_request.body)
       end
 
       private
 
-      def account_request
+      def sources_request
         query_params = {
           page: @client.configuration.response_limit
         }
