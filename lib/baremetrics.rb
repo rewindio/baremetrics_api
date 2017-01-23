@@ -1,5 +1,9 @@
-require "baremetrics/version"
+require 'baremetrics/version'
+require 'baremetrics/client'
+require 'baremetrics/version'
 
 module Baremetrics
-  # Your code goes here...
+  def self.client
+    @client || Baremetrics::Client.new
+  end
 end
