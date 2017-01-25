@@ -2,6 +2,9 @@ require 'baremetrics/configuration'
 require 'baremetrics/endpoint/account'
 require 'constants'
 require 'faraday'
+require 'faraday_middleware'
+require 'logger'
+require 'httpclient'
 
 module Baremetrics
   class Client
@@ -38,7 +41,10 @@ module Baremetrics
     def connection
       ensure_valid_configuration
       host = configuration.sandbox ? Constants::SANDBOX_API_HOST : Constants::API_HOST
-      Faraday.new(host, headers: { authorization: "Bearer #{configuration.api_key}" })
+      Faraday.new(host, headers: { authorization: "Bearer #{configuration.api_key}", content_type: 'application/json', accept: 'application/json' }) do |f|
+        f.request :json
+        f.adapter :httpclient
+      end
     end
 
     private
