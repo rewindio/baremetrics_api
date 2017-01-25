@@ -1,6 +1,6 @@
 module Baremetrics
   module Endpoint
-    class Goals
+    class Users
       PATH = '/users'.freeze
 
       def initialize(client)
