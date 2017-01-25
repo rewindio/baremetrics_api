@@ -16,19 +16,19 @@ module Baremetrics
       end
 
       def update_subscription(subscription_oid:, source_id:, subscription_params:)
-        JSON.parse(update_subscription_request(subscription_oid, source_id, subscription_params))
+        JSON.parse(update_subscription_request(subscription_oid, source_id, subscription_params).body)
       end
 
       def cancel_subscription(subscription_oid:, source_id:, canceled_at:)
-        JSON.parse(cancel_subscription_request(subscription_oid, source_id, canceled_at))
+        JSON.parse(cancel_subscription_request(subscription_oid, source_id, canceled_at).body)
       end
 
       def create_subscription(source_id:, subscription_params:)
-        JSON.parse(create_subscription_request(source_id, subscription_params))
+        JSON.parse(create_subscription_request(source_id, subscription_params).body)
       end
 
       def delete_subscription(oid:, source_id:)
-        JSON.parse(delete_subscription_request(oid, source_id))
+        JSON.parse(delete_subscription_request(oid, source_id).body)
       end
 
       private

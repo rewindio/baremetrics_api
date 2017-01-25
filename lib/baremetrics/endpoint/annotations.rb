@@ -16,11 +16,11 @@ module Baremetrics
       end
 
       def create_annotation(annotation_params:)
-        JSON.parse(create_annotation_request(annotation_params))
+        JSON.parse(create_annotation_request(annotation_params).body)
       end
 
       def delete_annotation(id:)
-        JSON.parse(delete_annotation_request(id))
+        JSON.parse(delete_annotation_request(id).body)
       end
 
       private

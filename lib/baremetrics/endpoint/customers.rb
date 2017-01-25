@@ -20,15 +20,15 @@ module Baremetrics
       end
 
       def update_customer(customer_oid:, source_id:, customer_params:)
-        JSON.parse(update_customer_request(customer_oid, source_id, customer_params))
+        JSON.parse(update_customer_request(customer_oid, source_id, customer_params).body)
       end
 
       def create_customer(source_id:, customer_params:)
-        JSON.parse(create_customer_request(source_id, customer_params))
+        JSON.parse(create_customer_request(source_id, customer_params).body)
       end
 
       def delete_customer(oid:, source_id:)
-        JSON.parse(delete_customer_request(oid, source_id))
+        JSON.parse(delete_customer_request(oid, source_id).body)
       end
 
       private

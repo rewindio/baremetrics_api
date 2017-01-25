@@ -11,29 +11,30 @@ module Baremetrics
         JSON.parse(list_plans_request(source_id, search).body)
       end
 
-      def show_plan(source_id:, plan_oid:)
-        JSON.parse(show_plan_request(source_id, plan_oid).body)
+      def show_plan(source_id:, oid:)
+        JSON.parse(show_plan_request(source_id, oid).body)
       end
 
       def update_plan(plan_oid:, source_id:, plan_params:)
-        JSON.parse(update_plan_request(plan_oid, source_id, plan_params))
+        JSON.parse(update_plan_request(plan_oid, source_id, plan_params).body)
       end
 
       def create_plan(source_id:, plan_params:)
-        JSON.parse(create_plan_request(source_id, plan_params))
+        JSON.parse(create_plan_request(source_id, plan_params).body)
       end
 
-      def delete_plan(plan_oid:, source_id:)
-        JSON.parse(delete_plan_request(plan_oid, source_id))
+      def delete_plan(oid:, source_id:)
+        JSON.parse(delete_plan_request(oid, source_id).body)
       end
 
       private
 
       def list_plans_request(source_id, search = nil)
         query_params = {
-          page: @client.configuration.response_limit,
-          search: search
+          page: @client.configuration.response_limit
         }
+
+        query_params[:search] = search unless search.nil?
 
         @client.connection.get do |req|
           req.url "#{source_id}/#{PATH}"
@@ -41,13 +42,13 @@ module Baremetrics
         end
       end
 
-      def show_plan_request(source_id, plan_oid)
+      def show_plan_request(source_id, oid)
         query_params = {
           page: @client.configuration.response_limit
         }
 
         @client.connection.get do |req|
-          req.url "#{source_id}/#{PATH}/#{plan_oid}"
+          req.url "#{source_id}/#{PATH}/#{oid}"
           req.params = query_params
         end
       end
@@ -66,8 +67,8 @@ module Baremetrics
         end
       end
 
-      def delete_plan_request(plan_oid, source_id)
-        @client.connection.delete "#{source_id}/#{PATH}/#{plan_oid}"
+      def delete_plan_request(oid, source_id)
+        @client.connection.delete "#{source_id}/#{PATH}/#{oid}"
       end
     end
   end
