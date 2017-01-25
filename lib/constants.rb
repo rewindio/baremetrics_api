@@ -1,6 +1,14 @@
 require 'baremetrics/endpoint/account'
-require 'baremetrics/endpoint/sources'
+require 'baremetrics/endpoint/annotations'
+require 'baremetrics/endpoint/charges'
+require 'baremetrics/endpoint/customers'
+require 'baremetrics/endpoint/events'
+require 'baremetrics/endpoint/goals'
+require 'baremetrics/endpoint/metrics'
 require 'baremetrics/endpoint/plans'
+require 'baremetrics/endpoint/sources'
+require 'baremetrics/endpoint/subscriptions'
+require 'baremetrics/endpoint/users'
 
 class Constants
   API_HOST = 'https://api.baremetrics.com/v1'.freeze
@@ -9,5 +17,8 @@ class Constants
   DEFAULT_RESPONSE_LIMIT = 30
 
   # Endpoints
-  ENDPOINT_CLASSES = [Baremetrics::Endpoint::Account, Baremetrics::Endpoint::Sources, Baremetrics::Endpoint::Plans].freeze
+  ENDPOINT_CLASSES = [Baremetrics::Endpoint::Account, Baremetrics::Endpoint::Annotations, Baremetrics::Endpoint::Charges,
+                      Baremetrics::Endpoint::Customers, Baremetrics::Endpoint::Events, Baremetrics::Endpoint::Goals,
+                      Baremetrics::Endpoint::Metrics, Baremetrics::Endpoint::Plans, Baremetrics::Endpoint::Sources,
+                      Baremetrics::Endpoint::Subscriptions, Baremetrics::Endpoint::Users].freeze
 end
