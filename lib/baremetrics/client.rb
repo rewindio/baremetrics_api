@@ -1,5 +1,4 @@
 require 'baremetrics/configuration'
-require 'baremetrics/http'
 require 'baremetrics/endpoint/account'
 require 'constants'
 require 'faraday'
