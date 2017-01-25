@@ -1,7 +1,7 @@
 module Baremetrics
   module Endpoint
     class Sources
-      PATH = '/sources'.freeze
+      PATH = 'sources'.freeze
 
       def initialize(client)
         @client = client
@@ -18,7 +18,10 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get PATH, query: query_params
+        @client.connection.get do |req|
+          req.url PATH
+          req.params = query_params
+        end
       end
     end
   end

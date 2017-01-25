@@ -1,7 +1,7 @@
 module Baremetrics
   module Endpoint
     class Charges
-      PATH = '/charges'.freeze
+      PATH = 'charges'.freeze
 
       def initialize(client)
         @client = client
@@ -26,7 +26,10 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get "/#{source_id}#{PATH}", query: query_params
+        @client.connection.get do |req|
+          req.url "#{source_id}/#{PATH}"
+          req.params = query_params
+        end
       end
 
       def show_charge_request(source_id, oid)
@@ -34,11 +37,17 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get "/#{source_id}#{PATH}/#{oid}", query: query_params
+        @client.connection.get do |req|
+          req.url "#{source_id}/#{PATH}/#{oid}"
+          req.params = query_params
+        end
       end
 
       def create_charge_request(source_id, charge_params)
-        @client.connection.post "/#{source_id}#{PATH}", body: charge_params
+        client.connection.post do |req|
+          req.url "#{source_id}/#{PATH}"
+          req.body = charge_params
+        end
       end
     end
   end

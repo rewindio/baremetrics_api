@@ -1,7 +1,7 @@
 module Baremetrics
   module Endpoint
     class Annotations
-      PATH = '/annotations'.freeze
+      PATH = 'annotations'.freeze
 
       def initialize(client)
         @client = client
@@ -30,7 +30,10 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get PATH, query: query_params
+        @client.connection.get do |req|
+          req.url PATH
+          req.params = query_params
+        end
       end
 
       def show_annotation_request(id)
@@ -38,11 +41,17 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get "#{PATH}/#{id}", query: query_params
+        @client.connection.get do |req|
+          req.url "#{PATH}/#{id}"
+          req.params = query_params
+        end
       end
 
       def create_annotation_request(annotation_params)
-        @client.connection.post PATH, body: annotation_params
+        @client.connection.post do |req|
+          req.url PATH
+          req.body = annotation_params
+        end
       end
 
       def delete_annotation_request(id)

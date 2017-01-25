@@ -1,7 +1,7 @@
 module Baremetrics
   module Endpoint
     class Subscriptions
-      PATH = '/subscriptions'.freeze
+      PATH = 'subscriptions'.freeze
 
       def initialize(client)
         @client = client
@@ -39,7 +39,10 @@ module Baremetrics
           customer_oid: customer_oid
         }
 
-        @client.connection.get "/#{source_id}#{PATH}", query: query_params
+        @client.connection.get do |req|
+          req.url "#{source_id}/#{PATH}"
+          req.params = query_params
+        end
       end
 
       def show_subscription_request(source_id, oid)
@@ -47,23 +50,35 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get "/#{source_id}#{PATH}/#{oid}", query: query_params
+        @client.connection.get do |req|
+          req.url "#{source_id}/#{PATH}/#{oid}"
+          req.params = query_params
+        end
       end
 
       def update_subscription_request(subscription_oid, source_id, subscription_params)
-        @client.connection.put "/#{source_id}#{PATH}/#{subscription_oid}", body: subscription_params
+        @client.connection.put do |req|
+          req.url "#{source_id}/#{PATH}/#{subscription_oid}"
+          req.body = subscription_params
+        end
       end
 
       def cancel_subscription_request(subscription_oid, source_id, canceled_at)
-        @client.connection.put "/#{source_id}#{PATH}/#{subscription_oid}/cancel", body: canceled_at
+        @client.connection.put do |req|
+          req.url "#{source_id}/#{PATH}/#{subscription_oid}/cancel"
+          req.body = canceled_at
+        end
       end
 
       def create_subscription_request(source_id, subscription_params)
-        @client.connection.post "/#{source_id}#{PATH}", body: subscription_params
+        @client.connection.post do |req|
+          req.url "#{source_id}/#{PATH}"
+          req.body = subscription_params
+        end
       end
 
       def delete_subscription_request(oid, source_id)
-        @client.connection.delete "/#{source_id}#{PATH}/#{oid}"
+        @client.connection.delete "#{source_id}/#{PATH}/#{oid}"
       end
     end
   end

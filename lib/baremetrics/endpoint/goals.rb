@@ -1,7 +1,7 @@
 module Baremetrics
   module Endpoint
     class Goals
-      PATH = '/goals'.freeze
+      PATH = 'goals'.freeze
 
       def initialize(client)
         @client = client
@@ -30,7 +30,10 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get PATH, query: query_params
+        @client.connection.get do |req|
+          req.url PATH
+          req.params = query_params
+        end
       end
 
       def show_goal_request(id)
@@ -38,11 +41,17 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get "#{PATH}/#{id}", query: query_params
+        @client.connection.get do |req|
+          req.url "#{PATH}/#{id}"
+          req.params = query_params
+        end
       end
 
       def create_goal_request(goal_params)
-        @client.connection.post PATH, body: goal_params
+        @client.connection.post do |req|
+          req.url PATH
+          req.body = goal_params
+        end
       end
 
       def delete_goal_request(id)

@@ -1,7 +1,9 @@
+require 'json'
+
 module Baremetrics
   module Endpoint
     class Account
-      PATH = '/account'.freeze
+      PATH = 'account'.freeze
 
       def initialize(client)
         @client = client
@@ -18,7 +20,10 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get PATH, query: query_params
+        @client.connection.get do |req|
+          req.url PATH
+          req.params = query_params
+        end
       end
     end
   end

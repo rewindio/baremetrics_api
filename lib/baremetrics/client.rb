@@ -2,6 +2,7 @@ require 'baremetrics/configuration'
 require 'baremetrics/http'
 require 'baremetrics/endpoint/account'
 require 'constants'
+require 'faraday'
 
 module Baremetrics
   class Client
@@ -34,10 +35,11 @@ module Baremetrics
       ensure_valid_configuration
     end
 
-    # Returns the raw HTTParty connection configured using the current configuration
+    # Returns the raw Faraday connection configured using the current configuration
     def connection
       ensure_valid_configuration
-      Baremetrics::HTTP.new(configuration).class
+      host = configuration.sandbox ? Constants::SANDBOX_API_HOST : Constants::API_HOST
+      Faraday.new(host, headers: { authorization: "Bearer #{configuration.api_key}" })
     end
 
     private

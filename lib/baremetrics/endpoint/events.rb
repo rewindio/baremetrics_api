@@ -1,7 +1,7 @@
 module Baremetrics
   module Endpoint
     class Events
-      PATH = '/events'.freeze
+      PATH = 'events'.freeze
 
       def initialize(client)
         @client = client
@@ -23,7 +23,10 @@ module Baremetrics
           live_stream: live_stream
         }
 
-        @client.connection.get "/#{source_id}#{PATH}", query: query_params
+        @client.connection.get do |req|
+          req.url "#{source_id}/#{PATH}"
+          req.params = query_params
+        end
       end
 
       def show_event_request(source_id, id)
@@ -31,7 +34,10 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get "/#{source_id}#{PATH}/#{id}", query: query_params
+        @client.connection.get do |req|
+          req.url "#{source_id}/#{PATH}/#{id}"
+          req.params = query_params
+        end
       end
     end
   end

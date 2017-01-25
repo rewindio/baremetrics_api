@@ -1,7 +1,7 @@
 module Baremetrics
   module Endpoint
     class Users
-      PATH = '/users'.freeze
+      PATH = 'users'.freeze
 
       def initialize(client)
         @client = client
@@ -22,7 +22,10 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get PATH, query: query_params
+        @client.connection.get do |req|
+          req.url PATH
+          req.params = query_params
+        end
       end
 
       def show_user_request(id)
@@ -30,7 +33,10 @@ module Baremetrics
           page: @client.configuration.response_limit
         }
 
-        @client.connection.get "#{PATH}/#{id}", query: query_params
+        @client.connection.get do |req|
+          req.url "#{PATH}/#{id}"
+          req.params = query_params
+        end
       end
     end
   end
