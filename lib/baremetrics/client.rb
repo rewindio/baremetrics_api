@@ -3,8 +3,8 @@ require 'baremetrics/endpoint/account'
 require 'constants'
 require 'faraday'
 require 'faraday_middleware'
-require 'logger'
 require 'httpclient'
+require 'errors'
 
 module Baremetrics
   class Client
