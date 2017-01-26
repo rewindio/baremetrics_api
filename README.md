@@ -1,8 +1,6 @@
 # Baremetrics
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/baremetrics`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a Ruby Gem for the Baremetrics API developed by Rewind.
 
 ## Installation
 
@@ -22,20 +20,61 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+**Initializing The Client**
 
-## Development
+This gem uses a client model for communication with the API. You initialize a client first with the desired configuration and then use it for making requests.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+client = Baremetrics::Client.new(api_key: '1234')
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+client.list_sources
+```
+
+The only required configuration parameter to initialize the client is the API key using this constructor. Unprovided parameters will have their default value.
+
+You can also initialize the client using a configuration block to have it globally configured:
+
+```ruby
+Baremetrics.client.configure do |config|
+  config.api_key = '123'
+  config.sandbox = false
+  config.response_limit = 30
+end
+
+Baremetrics.client.list_source
+```
+
+Note that you must specify all the configuration parameters when using this method as they will not have a default value.
+
+**Configuration Parameters**
+
+`api_key`: String - The Baremetrics API key. Can be sandbox or production.
+
+`sandbox`: Boolean - Whether to use the sandbox or production API endpoint. (Default: False)
+
+`response_limit`: The amount of items to return per page for GET requests (Default: 30)
+
+**Making Requests**
+
+The gem tries to best match its method names to the name of the corresponding API call in the Baremetrics documentation.
+All API calls are available as methods on the client object.
+To list which calls are available run: `client.methods`
+
+The arguments required for each endpoint are named keywords. We tried to best match the names of the parameters as described in the Baremetrics API documentation.
+
+An example call would be:
+
+```ruby
+client.list_customers(source_id: '123')
+```
+
+The response to all calls is raw JSON that is returned from the Baremetrics API.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/baremetrics.
+Bug reports and pull requests are welcome on GitHub at https://github.com/rewindit/baremetrics.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
