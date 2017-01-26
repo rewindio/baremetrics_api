@@ -20,9 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-**Initializing The Client**
+**Initializing the Client**
 
-This gem uses a client model for communication with the API. You initialize a client first with the desired configuration and then use it for making requests.
+This gem uses a client model for communication with the API. You initialize a client first with the desired configuration and then use it for making requests:
 
 ```ruby
 client = Baremetrics::Client.new(api_key: '1234')
@@ -30,7 +30,7 @@ client = Baremetrics::Client.new(api_key: '1234')
 client.list_sources
 ```
 
-The only required configuration parameter to initialize the client is the API key using this constructor. Unprovided parameters will have their default value.
+The only required configuration parameter to initialize the client is the API key using this constructor. Unprovided parameters will have their default value set.
 
 You can also initialize the client using a configuration block to have it globally configured:
 
@@ -53,9 +53,9 @@ Note that you must specify all the configuration parameters when using this meth
 
 `sandbox`: Boolean - Whether to use the sandbox or production API endpoint. (Default: false)
 
-`response_limit`: The amount of items to return per page for GET requests (Default: 30)
+`response_limit`: Integer - The amount of items to return per page for GET requests (Default: 30)
 
-`log_traffic`: Log requests and responses to the Baremetrics API (Default: false)
+`log_traffic`: Boolean - Output a log of requests and responses from the Baremetrics API (Default: false)
 
 **Making Requests**
 
