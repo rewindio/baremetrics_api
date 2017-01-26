@@ -15,6 +15,7 @@ module Baremetrics
 
       # Default to false
       self.sandbox = false if sandbox.nil?
+      self.log_traffic = false if log_traffic.nil?
       self.response_limit = Constants::DEFAULT_RESPONSE_LIMIT
     end
 

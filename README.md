@@ -39,6 +39,7 @@ Baremetrics.client.configure do |config|
   config.api_key = '123'
   config.sandbox = false
   config.response_limit = 30
+  config.log_traffic = false
 end
 
 Baremetrics.client.list_source
@@ -50,9 +51,11 @@ Note that you must specify all the configuration parameters when using this meth
 
 `api_key`: String - The Baremetrics API key. Can be sandbox or production.
 
-`sandbox`: Boolean - Whether to use the sandbox or production API endpoint. (Default: False)
+`sandbox`: Boolean - Whether to use the sandbox or production API endpoint. (Default: false)
 
 `response_limit`: The amount of items to return per page for GET requests (Default: 30)
+
+`log_traffic`: Log requests and responses to the Baremetrics API (Default: false)
 
 **Making Requests**
 
@@ -69,6 +72,12 @@ client.list_customers(source_id: '123')
 ```
 
 The response to all calls is raw JSON that is returned from the Baremetrics API.
+
+**Rate Limiting**
+
+The Baremetrics API has a rate limit which refreshes per-hour. When the rate limit is exceeded, this gem will throw the following exception `Error::RateLimitExeeded`.
+
+You should rescue this exception and retry after an hour when the rate limit is refreshed.
 
 ## Contributing
 

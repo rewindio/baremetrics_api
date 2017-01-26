@@ -10,4 +10,10 @@ module Error
       super
     end
   end
+
+  class RateLimitExeeded < StandardError
+    def initialize(msg = 'You have exeeded your rate limit')
+      super
+    end
+  end
 end
