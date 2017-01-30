@@ -1,4 +1,4 @@
-require 'errors'
+require 'baremetrics/errors'
 
 module Faraday
   class RateChecker < Faraday::Middleware

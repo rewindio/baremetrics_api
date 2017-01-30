@@ -1,4 +1,4 @@
-require 'constants'
+require 'baremetrics/constants'
 
 module Baremetrics
   class Configuration

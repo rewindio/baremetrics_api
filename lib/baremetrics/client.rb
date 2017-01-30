@@ -1,11 +1,11 @@
 require 'baremetrics/configuration'
 require 'baremetrics/endpoint/account'
-require 'constants'
+require 'baremetrics/constants'
 require 'faraday'
 require 'faraday_middleware'
 require 'faraday/rate_checker'
 require 'httpclient'
-require 'errors'
+require 'baremetrics/errors'
 require 'logger'
 
 module Baremetrics
