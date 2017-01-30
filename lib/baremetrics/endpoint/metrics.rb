@@ -8,19 +8,19 @@ module Baremetrics
       end
 
       def show_summary(start_date:, end_date:)
-        JSON.parse(show_summary_request(start_date, end_date).body)
+        JSON.parse(show_summary_request(start_date, end_date).body).with_indifferent_access
       end
 
       def show_metric(metric:, start_date:, end_date:, compare_to: 30)
-        JSON.parse(show_metric_request(metric, start_date, end_date, compare_to).body)
+        JSON.parse(show_metric_request(metric, start_date, end_date, compare_to).body).with_indifferent_access
       end
 
       def show_customers(metric:, start_date:, end_date:)
-        JSON.parse(show_customers_request(metric, start_date, end_date).body)
+        JSON.parse(show_customers_request(metric, start_date, end_date).body).with_indifferent_access
       end
 
       def show_plan_breakout(metric:, start_date:, end_date:)
-        JSON.parse(show_plan_breakout_request(metric, start_date, end_date).body)
+        JSON.parse(show_plan_breakout_request(metric, start_date, end_date).body).with_indifferent_access
       end
 
       private

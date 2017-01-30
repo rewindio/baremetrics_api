@@ -8,11 +8,11 @@ module Baremetrics
       end
 
       def list_events(source_id:, live_stream: false)
-        JSON.parse(list_events_request(source_id, live_stream).body)
+        JSON.parse(list_events_request(source_id, live_stream).body).with_indifferent_access
       end
 
       def show_event(source_id:, id:)
-        JSON.parse(show_event_request(source_id, id).body)
+        JSON.parse(show_event_request(source_id, id).body).with_indifferent_access
       end
 
       private

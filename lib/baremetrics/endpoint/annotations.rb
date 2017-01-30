@@ -8,19 +8,19 @@ module Baremetrics
       end
 
       def list_annotations
-        JSON.parse(list_annotations_request.body)
+        JSON.parse(list_annotations_request.body).with_indifferent_access
       end
 
       def show_annotation(id:)
-        JSON.parse(show_annotation_request(id).body)
+        JSON.parse(show_annotation_request(id).body).with_indifferent_access
       end
 
       def create_annotation(annotation_params:)
-        JSON.parse(create_annotation_request(annotation_params).body)
+        JSON.parse(create_annotation_request(annotation_params).body).with_indifferent_access
       end
 
       def delete_annotation(id:)
-        JSON.parse(delete_annotation_request(id).body)
+        JSON.parse(delete_annotation_request(id).body).with_indifferent_access
       end
 
       private

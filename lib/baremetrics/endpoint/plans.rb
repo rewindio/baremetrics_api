@@ -8,23 +8,23 @@ module Baremetrics
       end
 
       def list_plans(source_id:, search: nil)
-        JSON.parse(list_plans_request(source_id, search).body)
+        JSON.parse(list_plans_request(source_id, search).body).with_indifferent_access
       end
 
       def show_plan(source_id:, oid:)
-        JSON.parse(show_plan_request(source_id, oid).body)
+        JSON.parse(show_plan_request(source_id, oid).body).with_indifferent_access
       end
 
       def update_plan(plan_oid:, source_id:, plan_params:)
-        JSON.parse(update_plan_request(plan_oid, source_id, plan_params).body)
+        JSON.parse(update_plan_request(plan_oid, source_id, plan_params).body).with_indifferent_access
       end
 
       def create_plan(source_id:, plan_params:)
-        JSON.parse(create_plan_request(source_id, plan_params).body)
+        JSON.parse(create_plan_request(source_id, plan_params).body).with_indifferent_access
       end
 
       def delete_plan(oid:, source_id:)
-        JSON.parse(delete_plan_request(oid, source_id).body)
+        JSON.parse(delete_plan_request(oid, source_id).body).with_indifferent_access
       end
 
       private

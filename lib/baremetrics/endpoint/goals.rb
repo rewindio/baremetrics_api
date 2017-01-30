@@ -8,19 +8,19 @@ module Baremetrics
       end
 
       def list_goals
-        JSON.parse(list_goals_request.body)
+        JSON.parse(list_goals_request.body).with_indifferent_access
       end
 
       def show_goal(id:)
-        JSON.parse(show_goal_request(id).body)
+        JSON.parse(show_goal_request(id).body).with_indifferent_access
       end
 
       def create_goal(goal_params:)
-        JSON.parse(create_goal_request(goal_params).body)
+        JSON.parse(create_goal_request(goal_params).body).with_indifferent_access
       end
 
       def delete_goal(id:)
-        JSON.parse(delete_goal_request(id).body)
+        JSON.parse(delete_goal_request(id).body).with_indifferent_access
       end
 
       private

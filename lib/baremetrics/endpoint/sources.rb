@@ -8,7 +8,7 @@ module Baremetrics
       end
 
       def list_sources
-        JSON.parse(sources_request.body)
+        JSON.parse(sources_request.body).with_indifferent_access
       end
 
       private

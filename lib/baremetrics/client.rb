@@ -7,6 +7,8 @@ require 'faraday/rate_checker'
 require 'httpclient'
 require 'baremetrics/errors'
 require 'logger'
+require 'active_support/core_ext/hash'
+require 'json'
 
 module Baremetrics
   class Client

@@ -8,27 +8,27 @@ module Baremetrics
       end
 
       def list_customers(source_id:, search: nil)
-        JSON.parse(list_customers_request(source_id, search).body)
+        JSON.parse(list_customers_request(source_id, search).body).with_indifferent_access
       end
 
       def show_customer(source_id:, oid:)
-        JSON.parse(show_customer_request(source_id, oid).body)
+        JSON.parse(show_customer_request(source_id, oid).body).with_indifferent_access
       end
 
       def list_customer_events(source_id:, oid:)
-        JSON.parse(list_customer_events_request(source_id, oid).body)
+        JSON.parse(list_customer_events_request(source_id, oid).body).with_indifferent_access
       end
 
       def update_customer(customer_oid:, source_id:, customer_params:)
-        JSON.parse(update_customer_request(customer_oid, source_id, customer_params).body)
+        JSON.parse(update_customer_request(customer_oid, source_id, customer_params).body).with_indifferent_access
       end
 
       def create_customer(source_id:, customer_params:)
-        JSON.parse(create_customer_request(source_id, customer_params).body)
+        JSON.parse(create_customer_request(source_id, customer_params).body).with_indifferent_access
       end
 
       def delete_customer(oid:, source_id:)
-        JSON.parse(delete_customer_request(oid, source_id).body)
+        JSON.parse(delete_customer_request(oid, source_id).body).with_indifferent_access
       end
 
       private

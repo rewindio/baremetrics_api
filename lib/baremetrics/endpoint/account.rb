@@ -1,5 +1,3 @@
-require 'json'
-
 module Baremetrics
   module Endpoint
     class Account
@@ -10,7 +8,7 @@ module Baremetrics
       end
 
       def get_account
-        JSON.parse(account_request.body)
+        JSON.parse(account_request.body).with_indifferent_access
       end
 
       private

@@ -8,27 +8,27 @@ module Baremetrics
       end
 
       def list_subscriptions(source_id:, customer_oid: nil)
-        JSON.parse(list_subscriptions_request(source_id, customer_oid).body)
+        JSON.parse(list_subscriptions_request(source_id, customer_oid).body).with_indifferent_access
       end
 
       def show_subscription(source_id:, oid:)
-        JSON.parse(show_subscription_request(source_id, oid).body)
+        JSON.parse(show_subscription_request(source_id, oid).body).with_indifferent_access
       end
 
       def update_subscription(subscription_oid:, source_id:, subscription_params:)
-        JSON.parse(update_subscription_request(subscription_oid, source_id, subscription_params).body)
+        JSON.parse(update_subscription_request(subscription_oid, source_id, subscription_params).body).with_indifferent_access
       end
 
       def cancel_subscription(subscription_oid:, source_id:, canceled_at:)
-        JSON.parse(cancel_subscription_request(subscription_oid, source_id, canceled_at).body)
+        JSON.parse(cancel_subscription_request(subscription_oid, source_id, canceled_at).body).with_indifferent_access
       end
 
       def create_subscription(source_id:, subscription_params:)
-        JSON.parse(create_subscription_request(source_id, subscription_params).body)
+        JSON.parse(create_subscription_request(source_id, subscription_params).body).with_indifferent_access
       end
 
       def delete_subscription(oid:, source_id:)
-        JSON.parse(delete_subscription_request(oid, source_id).body)
+        JSON.parse(delete_subscription_request(oid, source_id).body).with_indifferent_access
       end
 
       private

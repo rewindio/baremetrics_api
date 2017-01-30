@@ -8,11 +8,11 @@ module Baremetrics
       end
 
       def list_users
-        JSON.parse(list_users_request.body)
+        JSON.parse(list_users_request.body).with_indifferent_access
       end
 
       def show_user(id:)
-        JSON.parse(show_user_request(id).body)
+        JSON.parse(show_user_request(id).body).with_indifferent_access
       end
 
       private
