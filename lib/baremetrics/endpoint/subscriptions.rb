@@ -7,7 +7,7 @@ module Baremetrics
         @client = client
       end
 
-      def list_subscriptions(source_id:, customer_oid: nil)
+      def list_subscriptions(source_id: nil, customer_oid: nil)
         JSON.parse(list_subscriptions_request(source_id, customer_oid).body).with_indifferent_access
       end
 
@@ -40,7 +40,7 @@ module Baremetrics
         }
 
         @client.connection.get do |req|
-          req.url "#{source_id}/#{PATH}"
+          req.url source_id.nil? ? PATH : "#{source_id}/#{PATH}"
           req.params = query_params
         end
       end
