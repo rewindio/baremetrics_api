@@ -7,8 +7,8 @@ module Baremetrics
         @client = client
       end
 
-      def list_users
-        JSON.parse(list_users_request.body).with_indifferent_access
+      def list_users(page: nil)
+        JSON.parse(list_users_request(page).body).with_indifferent_access
       end
 
       def show_user(id:)
@@ -17,10 +17,12 @@ module Baremetrics
 
       private
 
-      def list_users_request
+      def list_users_request(page)
         query_params = {
-          page: @client.configuration.response_limit
+          per_page: @client.configuration.response_limit
         }
+
+        query_params[:page] = page unless page.nil?
 
         @client.connection.get do |req|
           req.url PATH
@@ -29,13 +31,8 @@ module Baremetrics
       end
 
       def show_user_request(id)
-        query_params = {
-          page: @client.configuration.response_limit
-        }
-
         @client.connection.get do |req|
           req.url "#{PATH}/#{id}"
-          req.params = query_params
         end
       end
     end

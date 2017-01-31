@@ -14,13 +14,8 @@ module Baremetrics
       private
 
       def sources_request
-        query_params = {
-          page: @client.configuration.response_limit
-        }
-
         @client.connection.get do |req|
           req.url PATH
-          req.params = query_params
         end
       end
     end

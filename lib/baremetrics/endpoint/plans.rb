@@ -7,8 +7,8 @@ module Baremetrics
         @client = client
       end
 
-      def list_plans(source_id: nil, search: nil)
-        JSON.parse(list_plans_request(source_id, search).body).with_indifferent_access
+      def list_plans(source_id: nil, search: nil, page: nil)
+        JSON.parse(list_plans_request(source_id, search, page).body).with_indifferent_access
       end
 
       def show_plan(source_id:, oid:)
@@ -29,12 +29,13 @@ module Baremetrics
 
       private
 
-      def list_plans_request(source_id, search = nil)
+      def list_plans_request(source_id, search, page)
         query_params = {
-          page: @client.configuration.response_limit
+          per_page: @client.configuration.response_limit
         }
 
         query_params[:search] = search unless search.nil?
+        query_params[:page] = page unless page.nil?
 
         @client.connection.get do |req|
           req.url source_id.nil? ? PATH : "#{source_id}/#{PATH}"
@@ -43,13 +44,8 @@ module Baremetrics
       end
 
       def show_plan_request(source_id, oid)
-        query_params = {
-          page: @client.configuration.response_limit
-        }
-
         @client.connection.get do |req|
           req.url "#{source_id}/#{PATH}/#{oid}"
-          req.params = query_params
         end
       end
 

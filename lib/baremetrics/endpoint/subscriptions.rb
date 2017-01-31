@@ -7,8 +7,8 @@ module Baremetrics
         @client = client
       end
 
-      def list_subscriptions(source_id: nil, customer_oid: nil)
-        JSON.parse(list_subscriptions_request(source_id, customer_oid).body).with_indifferent_access
+      def list_subscriptions(source_id: nil, customer_oid: nil, page: nil)
+        JSON.parse(list_subscriptions_request(source_id, customer_oid, page).body).with_indifferent_access
       end
 
       def show_subscription(source_id:, oid:)
@@ -33,11 +33,13 @@ module Baremetrics
 
       private
 
-      def list_subscriptions_request(source_id, customer_oid)
+      def list_subscriptions_request(source_id, customer_oid, page)
         query_params = {
-          page: @client.configuration.response_limit,
+          per_page: @client.configuration.response_limit,
           customer_oid: customer_oid
         }
+
+        query_params[:page] = page unless page.nil?
 
         @client.connection.get do |req|
           req.url source_id.nil? ? PATH : "#{source_id}/#{PATH}"
@@ -46,13 +48,8 @@ module Baremetrics
       end
 
       def show_subscription_request(source_id, oid)
-        query_params = {
-          page: @client.configuration.response_limit
-        }
-
         @client.connection.get do |req|
           req.url "#{source_id}/#{PATH}/#{oid}"
-          req.params = query_params
         end
       end
 

@@ -7,8 +7,8 @@ module Baremetrics
         @client = client
       end
 
-      def list_annotations
-        JSON.parse(list_annotations_request.body).with_indifferent_access
+      def list_annotations(page: nil)
+        JSON.parse(list_annotations_request(page).body).with_indifferent_access
       end
 
       def show_annotation(id:)
@@ -25,10 +25,12 @@ module Baremetrics
 
       private
 
-      def list_annotations_request
+      def list_annotations_request(page)
         query_params = {
-          page: @client.configuration.response_limit
+          per_page: @client.configuration.response_limit
         }
+
+        query_params[:page] = page unless page.nil?
 
         @client.connection.get do |req|
           req.url PATH
@@ -37,13 +39,8 @@ module Baremetrics
       end
 
       def show_annotation_request(id)
-        query_params = {
-          page: @client.configuration.response_limit
-        }
-
         @client.connection.get do |req|
           req.url "#{PATH}/#{id}"
-          req.params = query_params
         end
       end
 
