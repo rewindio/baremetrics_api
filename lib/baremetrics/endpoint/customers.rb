@@ -35,9 +35,10 @@ module Baremetrics
 
       def list_customers_request(source_id, search)
         query_params = {
-          page: @client.configuration.response_limit,
-          search: search
+          page: @client.configuration.response_limit
         }
+
+        query_params[:search] = search unless search.nil?
 
         @client.connection.get do |req|
           req.url source_id.nil? ? PATH : "#{source_id}/#{PATH}"
