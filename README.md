@@ -7,7 +7,7 @@ This is a Ruby Gem for the Baremetrics API developed by Rewind.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'baremetrics'
+gem 'baremetrics-api'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install baremetrics
+    $ gem install baremetrics-api
 
 ## Usage
 

@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'baremetrics/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'baremetrics'
+  spec.name          = 'baremetrics-api'
   spec.version       = Baremetrics::VERSION
-  spec.authors       = ['ThirdBlink']
+  spec.authors       = ['Third Blink Software Inc']
   spec.email         = ['help@rewindit.io']
 
-  spec.summary       = 'Ruby client library for Baremetrics API'
+  spec.summary       = 'Ruby client library for Baremetrics V1 API'
   spec.description   = 'Provides an easy way to interact with the Baremetrics API in any application.'
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = 'MIT'
