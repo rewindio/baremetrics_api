@@ -1,6 +1,6 @@
-require 'baremetrics/constants'
+require 'baremetrics/api/constants'
 
-module Baremetrics
+module Baremetrics::API
   class Configuration
     CONFIG_KEYS = Constants::CONFIG_KEYS
 

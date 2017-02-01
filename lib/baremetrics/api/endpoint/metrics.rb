@@ -1,4 +1,4 @@
-module Baremetrics
+module Baremetrics::API
   module Endpoint
     class Metrics
       PATH = 'metrics'.freeze

@@ -1,4 +1,4 @@
-module Baremetrics
+module Baremetrics::API
   module Endpoint
     class Annotations
       PATH = 'annotations'.freeze

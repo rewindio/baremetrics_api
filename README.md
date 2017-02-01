@@ -25,7 +25,7 @@ Or install it yourself as:
 This gem uses a client model for communication with the API. You initialize a client first with the desired configuration and then use it for making requests:
 
 ```ruby
-client = Baremetrics::Client.new(api_key: '1234')
+client = Baremetrics::API::Client.new(api_key: '1234')
 
 client.list_sources
 ```
@@ -35,14 +35,14 @@ The only required configuration parameter to initialize the client is the API ke
 You can also initialize the client using a configuration block to have it globally configured:
 
 ```ruby
-Baremetrics.client.configure do |config|
+Baremetrics::API.client.configure do |config|
   config.api_key = '123'
   config.sandbox = false
   config.response_limit = 30
   config.log_traffic = false
 end
 
-Baremetrics.client.list_source
+Baremetrics::API.client.list_source
 ```
 
 Note that you must specify all the configuration parameters when using this method as they will not have a default value.

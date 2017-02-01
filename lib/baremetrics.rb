@@ -1,8 +1,8 @@
-require 'baremetrics/client'
+require 'baremetrics/api/client'
 require 'baremetrics/version'
 
-module Baremetrics
+module Baremetrics::API
   def self.client
-    @client ||= Baremetrics::Client.new
+    @client ||= Baremetrics::API::Client.new
   end
 end

@@ -1,19 +1,19 @@
-module Baremetrics
+module Baremetrics::API
   module Endpoint
-    class Account
-      PATH = 'account'.freeze
+    class Sources
+      PATH = 'sources'.freeze
 
       def initialize(client)
         @client = client
       end
 
-      def get_account
-        JSON.parse(account_request.body).with_indifferent_access
+      def list_sources
+        JSON.parse(sources_request.body).with_indifferent_access
       end
 
       private
 
-      def account_request
+      def sources_request
         @client.connection.get do |req|
           req.url PATH
         end
