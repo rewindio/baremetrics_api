@@ -63,7 +63,7 @@ module Baremetrics
       def cancel_subscription_request(subscription_oid, source_id, canceled_at)
         @client.connection.put do |req|
           req.url "#{source_id}/#{PATH}/#{subscription_oid}/cancel"
-          req.body = canceled_at
+          req.body = { canceled_at: canceled_at }
         end
       end
 
