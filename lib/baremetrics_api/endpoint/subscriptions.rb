@@ -1,4 +1,4 @@
-module Baremetrics::API
+module BaremetricsAPI
   module Endpoint
     class Subscriptions
       PATH = 'subscriptions'.freeze

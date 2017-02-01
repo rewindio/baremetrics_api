@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'baremetrics/version'
+require 'baremetrics_api/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'baremetrics-api'
-  spec.version       = Baremetrics::VERSION
+  spec.name          = 'baremetrics_api'
+  spec.version       = BaremetricsAPI::VERSION
   spec.authors       = ['Third Blink Software Inc']
   spec.email         = ['help@rewindit.io']
 

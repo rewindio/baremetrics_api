@@ -7,7 +7,7 @@ This is a Ruby Gem for the Baremetrics API developed by Rewind.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'baremetrics-api'
+gem 'baremetrics_api'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install baremetrics-api
+    $ gem install baremetrics_api
 
 ## Usage
 
@@ -25,7 +25,7 @@ Or install it yourself as:
 This gem uses a client model for communication with the API. You initialize a client first with the desired configuration and then use it for making requests:
 
 ```ruby
-client = Baremetrics::API::Client.new(api_key: '1234')
+client = BaremetricsAPI::Client.new(api_key: '1234')
 
 client.list_sources
 ```
@@ -35,14 +35,14 @@ The only required configuration parameter to initialize the client is the API ke
 You can also initialize the client using a configuration block to have it globally configured:
 
 ```ruby
-Baremetrics::API.client.configure do |config|
+BaremetricsAPI.client.configure do |config|
   config.api_key = '123'
   config.sandbox = false
   config.response_limit = 30
   config.log_traffic = false
 end
 
-Baremetrics::API.client.list_source
+BaremetricsAPI.client.list_source
 ```
 
 Note that you must specify all the configuration parameters when using this method as they will not have a default value.

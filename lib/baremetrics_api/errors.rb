@@ -1,4 +1,4 @@
-module Baremetrics::API
+module BaremetricsAPI
   module Error
     class MissingConfigurationKeys < StandardError
       def initialize(msg = 'One or more required configuration keys are missing or invalid')

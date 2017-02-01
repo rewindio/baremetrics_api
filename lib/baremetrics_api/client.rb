@@ -1,16 +1,16 @@
-require 'baremetrics/api/configuration'
-require 'baremetrics/api/endpoint/account'
-require 'baremetrics/api/constants'
+require 'baremetrics_api/configuration'
+require 'baremetrics_api/endpoint/account'
+require 'baremetrics_api/constants'
 require 'faraday'
 require 'faraday_middleware'
 require 'faraday/rate_checker'
 require 'httpclient'
-require 'baremetrics/api/errors'
+require 'baremetrics_api/errors'
 require 'logger'
 require 'active_support/core_ext/hash'
 require 'json'
 
-module Baremetrics::API
+module BaremetricsAPI
   class Client
     attr_reader :configuration
 
@@ -28,7 +28,7 @@ module Baremetrics::API
     # Configure the API client
     # @yield [Configuration] the configuration
     # @example Basic configuration
-    #   Baremetrics::API.client.configure do |config|
+    #   Baremetrics::Api.client.configure do |config|
     #     config.api_key = 'test123'
     #     config.response_limit = '30'
     #   end
@@ -70,7 +70,7 @@ module Baremetrics::API
     # endpoint classes onto the client. This allows for simple interaction
     # with the gem.
     # For example: client.retrieve_account instead of
-    # Baremetrics::API::Endpoint::Account.new(client).retrieve_account
+    # Baremetrics::Api::Endpoint::Account.new(client).retrieve_account
 
     def append_request_methods_to_class
       Constants::ENDPOINT_CLASSES.each do |endpoint_class|
