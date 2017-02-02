@@ -28,7 +28,7 @@ module BaremetricsAPI
     # Configure the API client
     # @yield [Configuration] the configuration
     # @example Basic configuration
-    #   Baremetrics::Api.client.configure do |config|
+    #   BaremetricsAPI.client.configure do |config|
     #     config.api_key = 'test123'
     #     config.response_limit = '30'
     #   end
@@ -70,7 +70,7 @@ module BaremetricsAPI
     # endpoint classes onto the client. This allows for simple interaction
     # with the gem.
     # For example: client.retrieve_account instead of
-    # Baremetrics::Api::Endpoint::Account.new(client).retrieve_account
+    # BaremetricsAPI::Endpoint::Account.new(client).retrieve_account
 
     def append_request_methods_to_class
       Constants::ENDPOINT_CLASSES.each do |endpoint_class|
