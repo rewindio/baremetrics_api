@@ -19,13 +19,6 @@ module BaremetricsAPI
       self.response_limit = Constants::DEFAULT_RESPONSE_LIMIT
     end
 
-    def keys
-      CONFIG_KEYS.each_with_object({}) do |return_hash, key|
-        return_hash[key] = send(key)
-        return_hash
-      end
-    end
-
     # A configuration is valid if none of the keys are nil
     def valid?
       CONFIG_KEYS.none? { |key| send(key).nil? }
