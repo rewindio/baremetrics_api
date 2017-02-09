@@ -9,7 +9,7 @@ module Faraday
     def call(request_env)
       @app.call(request_env).on_complete do |response_env|
         if response_env[:body].include?('You have exceeded your rate limit')
-          raise ::Error::RateLimitExeeded
+          raise BaremetricsAPI::Error::RateLimitExeeded
         end
       end
     end
