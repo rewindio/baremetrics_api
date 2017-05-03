@@ -4,15 +4,15 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'baremetrics_api/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'baremetrics_api'
+  spec.name          = 'baremetrics-api'
   spec.version       = BaremetricsAPI::VERSION
   spec.authors       = ['Third Blink Software Inc']
-  spec.email         = ['help@rewindit.io']
+  spec.email         = ['team@thirdblink.com']
 
   spec.summary       = 'Ruby client library for Baremetrics V1 API'
   spec.description   = 'Provides an easy way to interact with the Baremetrics API in any application.'
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-  spec.license       = 'MIT'
+  spec.license       = 'Nonstandard'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -23,9 +23,8 @@ Gem::Specification.new do |spec|
       'public gem pushes.'
   end
 
-  spec.files = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
+  spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
