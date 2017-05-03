@@ -1,9 +1,17 @@
-/.bundle/
-/.yardoc
-/Gemfile.lock
-/_yardoc/
-/coverage/
-/doc/
-/pkg/
-/spec/reports/
-/tmp/
+.bundle
+*.gem
+Gemfile.lock
+db/*.sqlite3
+log/*
+tmp/*
+.DS_Store
+.idea/*
+certs/*
+.elasticbeanstalk/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+config/application.yml
