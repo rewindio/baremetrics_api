@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'baremetrics_api/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'baremetrics-api'
+  spec.name          = 'baremetrics_api'
   spec.version       = BaremetricsAPI::VERSION
   spec.authors       = ['Third Blink Software Inc']
   spec.email         = ['team@thirdblink.com']
@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  
+
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
