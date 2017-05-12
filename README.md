@@ -1,4 +1,4 @@
-# Baremetrics
+# Baremetrics API
 
 This is a Ruby Gem for the Baremetrics API developed by Rewind.
 
