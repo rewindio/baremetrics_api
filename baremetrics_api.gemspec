@@ -11,17 +11,8 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Ruby client library for Baremetrics V1 API'
   spec.description   = 'Provides an easy way to interact with the Baremetrics API in any application.'
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = 'https://github.com/rewindit/baremetrics_api'
   spec.license       = 'Nonstandard'
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise 'RubyGems 2.0 or newer is required to protect against ' \
-      'public gem pushes.'
-  end
 
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
 
@@ -33,8 +24,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
 
-  spec.add_dependency 'faraday'
-  spec.add_dependency 'faraday_middleware'
-  spec.add_dependency 'httpclient'
-  spec.add_dependency 'activesupport'
+  spec.add_dependency 'faraday',  '~> 0.9'
+  spec.add_dependency 'faraday_middleware', '~> 0.11'
+  spec.add_dependency 'httpclient', '~> 2.8'
+  spec.add_dependency 'activesupport', '~> 4.2'
 end
