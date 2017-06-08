@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Ruby client library for Baremetrics V1 API'
   spec.description   = 'Provides an easy way to interact with the Baremetrics API in any application.'
-  spec.homepage      = 'https://github.com/rewindit/baremetrics_api'
-  spec.license       = 'Nonstandard'
+  spec.homepage      = 'https://github.com/rewindio/baremetrics_api'
+  spec.license       = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
 
@@ -27,5 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'faraday',  '~> 0.9'
   spec.add_dependency 'faraday_middleware', '~> 0.11'
   spec.add_dependency 'httpclient', '~> 2.8'
-  spec.add_dependency 'activesupport', '~> 4.2'
+  spec.add_dependency 'activesupport', '~> 5.0'
 end

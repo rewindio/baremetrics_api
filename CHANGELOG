@@ -1,0 +1,8 @@
+== Version 1.0.0
+
+* Updated gemspec; corrected license and homepage reference
+* Updated dependency on ActiveSupport from 4.2 to 5.0
+
+== Version 0.1.1
+
+* Initial release
