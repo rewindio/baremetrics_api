@@ -1,3 +1,11 @@
+== Version 1.0.2
+
+* Fix `create_charge` failing to generate request
+
+== Version 1.0.1
+
+* Fix `show_plan_breakout` wrong argument error
+
 == Version 1.0.0
 
 * Updated gemspec; corrected license and homepage reference
