@@ -41,7 +41,7 @@ module BaremetricsAPI
       end
 
       def create_charge_request(source_id, charge_params)
-        client.connection.post do |req|
+        @client.connection.post do |req|
           req.url "#{source_id}/#{PATH}"
           req.body = charge_params
         end
