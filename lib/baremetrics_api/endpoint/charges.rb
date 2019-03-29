@@ -7,8 +7,8 @@ module BaremetricsAPI
         @client = client
       end
 
-      def list_charges(source_id:, page: nil)
-        JSON.parse(list_charges_request(source_id, page).body).with_indifferent_access
+      def list_charges(source_id:, search_params: {}, page: nil)
+        JSON.parse(list_charges_request(source_id, search_params, page).body).with_indifferent_access
       end
 
       def show_charge(source_id:, oid:)
@@ -21,11 +21,12 @@ module BaremetricsAPI
 
       private
 
-      def list_charges_request(source_id)
+      def list_charges_request(source_id, search_params, page)
         query_params = {
           per_page: @client.configuration.response_limit
         }
 
+        query_params = query_params.merge(search_params)
         query_params[:page] = page unless page.nil?
 
         @client.connection.get do |req|
