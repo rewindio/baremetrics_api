@@ -1,3 +1,11 @@
+== Version 1.0.4
+
+* Add `delete_charge` action
+
+== Version 1.0.3
+
+* Fix `list_charges` endpoint
+
 == Version 1.0.2
 
 * Fix `create_charge` failing to generate request
