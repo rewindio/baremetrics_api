@@ -7,6 +7,10 @@ module BaremetricsAPI
         @client = client
       end
 
+      def delete_charge(source_id:, oid:)
+        JSON.parse(delete_charge_request(source_id, oid).body).with_indifferent_access
+      end
+
       def list_charges(source_id:, search_params: {}, page: nil)
         JSON.parse(list_charges_request(source_id, search_params, page).body).with_indifferent_access
       end
@@ -20,6 +24,12 @@ module BaremetricsAPI
       end
 
       private
+
+      def delete_charge_request(source_id, oid)
+        @client.connection.delete do |req|
+          req.url "#{source_id}/#{PATH}/#{oid}"
+        end
+      end
 
       def list_charges_request(source_id, search_params, page)
         query_params = {
