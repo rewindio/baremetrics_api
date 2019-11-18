@@ -1,3 +1,5 @@
+# This gem is no longer being updated or maintained by Rewind.  Drop us a note if you'd like to take over maintenance
+
 # Baremetrics API
 
 This is a Ruby Gem for the Baremetrics API developed by Rewind.
